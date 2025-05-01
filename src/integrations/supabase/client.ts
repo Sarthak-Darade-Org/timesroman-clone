@@ -3,7 +3,10 @@ import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
 // Self-hosted PostgREST endpoint and JWT secret
-const SUPABASE_URL = "https://trserver.cloud";
-const SUPABASE_PUBLIC_KEY = "504b96859cf48ca08981d49baa206506ccf71673078b6763d66fc1afd19e25cb"; // Must match PostgREST's JWT secret
+const supabase = createClient(
+  "https://trserver.cloud",             // acts like your project URL
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE"                       // JWT you defined
+);
 
-export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLIC_KEY);
+
+export const supabase = createClient<Database>("", "");
